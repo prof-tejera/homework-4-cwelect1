@@ -9,13 +9,11 @@ const Calculator = () => {
   // Need at least 3 useStates (1st num, operation, 2nd num)
   const [firstOperand, setFirstOperand] = useState("");
   const [secondOperand, setSecondOperand] = useState("");
-  const [operation, setOperation] = useState("");
+  //const [operation, setOperation] = useState("");
   const [screenResult, setScreenResult] = useState("0");
 
   let isOperand1 = true;
-  let operand1 = "";
-  let operand2 = "";
-  let operators = [];
+  //let operators = [];
 
   /** TODO: what happens when I click a number? */
   const handleNumberClick = (number) => {
@@ -23,7 +21,7 @@ const Calculator = () => {
       setFirstOperand(firstOperand + number);
     }
     else{
-      operand2 = operand2 + number;
+      setSecondOperand(secondOperand + number);
     }
     
     setScreenResult(firstOperand);
