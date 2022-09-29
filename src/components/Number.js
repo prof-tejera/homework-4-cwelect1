@@ -1,20 +1,20 @@
+
 const Number = ({ value, onClick }) => {
   /** TODO: What happens when a user clicks a number, what do we want to pass to our parent? 
-   1. change background color to indicate a click
-    a) change color back after release of click
-    b) do we handle multiple clicks (user holds key down)
-   2. return value clicked to business logic
+   I added a class name so I could change the background color 
+   on mouse click (css:active), but couldn't get it working.
   */
-  console.log('Number component ' + value);
+  
   if(value === 0){
     return (
       <div
         onClick={() => {onClick(value)}}
+        className="btn"
         style={{
           padding: 10,
           textAlign: "center",
           border: ".5px solid black",
-          width: 142,
+          width: 141,
           backgroundColor: "grey",
           color: "white"
         }}
@@ -28,6 +28,7 @@ const Number = ({ value, onClick }) => {
     return (
       <div
         onClick={() => {onClick(value)}}
+        className="btn"
         style={{
           padding: 10,
           textAlign: "center",

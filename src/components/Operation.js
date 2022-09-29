@@ -4,7 +4,6 @@ const Operation = ({ value, onClick }) => {
    * 2. Return value to parent for business logic processing
    * 
   */
-   console.log('Operation component ' + value);
   if(value === "AC"){
     return (
       <div

@@ -1,10 +1,9 @@
 const Screen = ({ value }) => {
-  console.log('Screen component.')
   return (
     <div
       style={{
         border: ".5px solid black",
-        width: 321,
+        width: 318,
         height: 70,
         textAlign: "right",
         paddingRight: 5,

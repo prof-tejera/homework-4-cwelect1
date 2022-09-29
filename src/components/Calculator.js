@@ -4,48 +4,67 @@ import Operation from './Operation';
 import Screen from './Screen';
 
 const Calculator = () => {
-  console.log('Calcultor component');
   /** TODO: Here is where you are going to keep track of calculator state */
-  // Need at least 3 useStates (1st num, operation, 2nd num)
-  const [firstOperand, setFirstOperand] = useState("");
+  const [firstOperand,  setFirstOperand]  = useState("");
   const [secondOperand, setSecondOperand] = useState("");
-  //const [operation, setOperation] = useState("");
-  const [screenResult, setScreenResult] = useState("0");
+  const [operation,     setOperation]     = useState("");
+  const [screenResult,  setScreenResult]  = useState("0");
 
-  let isOperand1 = true;
-  //let operators = [];
+  let result = "";
 
   /** TODO: what happens when I click a number? */
   const handleNumberClick = (number) => {
-    if(isOperand1){
-      setFirstOperand(firstOperand + number);
+    if(operation === ""){
+      result = firstOperand + number;
+      setFirstOperand(result);
     }
     else{
-      setSecondOperand(secondOperand + number);
+      result = secondOperand + number;
+      setSecondOperand(result);
     }
     
-    setScreenResult(firstOperand);
-    console.log("firstOperand: " + firstOperand + " secondOperand: " + secondOperand)
-    // push value into string
-    // concat additional numbers (before and operation is chosen)
-
+    setScreenResult(result);
   };
 
   /** TODO: what happens when I click an operation? */
-  const handleOperationClick = (operation) => {
-    if (operation === 'AC'){
-      console.log('AC')
+  const handleOperationClick = (op) => {
+    if (op === 'AC'){
       setScreenResult("0");
-      setFirstOperand("");
+      clearOperatorsAndOperands();
     }
-    // 1st operation?
-    //  - push into array of operators
-    //  - push current operand string into numbers array and clear string (for next operand)
-    // 2nd or later operation
-    //  - push to array
-    //  - perform calculateion and display value 
-    //  - if "=", calculate, display then clear all stored values
+    else if (op === '='){
+      setScreenResult(calculateResult(firstOperand, secondOperand, operation));
+      clearOperatorsAndOperands();
+    }
+    else{
+      setOperation(op);
+    }
   };
+
+  const calculateResult = (operand1, operand2, operator) => {
+    let result = "";
+
+    if(operator === '+'){
+      result = operand1 + operand2;
+    }
+    else if(operator === '-'){
+      result = operand1 - operand2;
+    }
+    else if(operator === '/'){
+      result = operand1 / operand2;
+    }
+    else if(operator === 'x'){
+      result = operand1 * operand2;
+    }
+    
+    return result;
+  };
+
+  const clearOperatorsAndOperands = () => {
+    setFirstOperand("");
+    setSecondOperand("");
+    setOperation("");
+  }
 
   return (
     <div>
