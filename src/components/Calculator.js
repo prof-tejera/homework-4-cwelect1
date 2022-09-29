@@ -45,7 +45,7 @@ const Calculator = () => {
     let result = "";
 
     if(operator === '+'){
-      result = operand1 + operand2;
+      result = parseFloat(operand1) + parseFloat(operand2);
     }
     else if(operator === '-'){
       result = operand1 - operand2;
